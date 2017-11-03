@@ -23,7 +23,7 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
-/* // Add LUIS recognizer
+// Add LUIS recognizer
 var recognizer = new builder.LuisRecognizer(process.env.MY_LUIS_MODEL);
 var intents = new builder.IntentDialog({ recognizers: [recognizer] });
 
@@ -32,11 +32,12 @@ bot.dialog('/', intents);
 intents.matches('Greeting', builder.DialogAction.send('Hello'));
 intents.matches('Help', builder.DialogAction.send("Basic help information goes here."));
 intents.matches('AboutTheBot', builder.DialogAction.send("I'm a chat bot, built using the botscaffold Yeoman generator."));
-intents.onDefault(builder.DialogAction.send("Sorry, but I didn't understand that. Type Help to get some help.")); */
+intents.matches('ShowPics', builder.DialogAction.send("You want to see a picture of $SearchSubject"));
+intents.onDefault(builder.DialogAction.send("Sorry, but I didn't understand that. Type Help to get some help."));
 
-var bot = new builder.UniversalBot(connector, function (session) {
+/* var bot = new builder.UniversalBot(connector, function (session) {
     session.send("You said: %s", session.message.text);
-});
+}); */
 
 // web interface
 server.get('/', restify.plugins.serveStatic({
