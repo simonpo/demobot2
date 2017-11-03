@@ -32,7 +32,11 @@ bot.dialog('/', intents);
 intents.matches('Greeting', builder.DialogAction.send('Hello'));
 intents.matches('Help', builder.DialogAction.send("Basic help information goes here."));
 intents.matches('AboutTheBot', builder.DialogAction.send("I'm a chat bot, built using the botscaffold Yeoman generator."));
-intents.matches('ShowPics', builder.DialogAction.send("You want to see a picture of $SearchSubject"));
+intents.matches('ShowPics', [
+    function(session, args, next) {
+        builder.DialogAction.send("You want to see a picture of $SearchSubject");
+    }
+]);
 intents.onDefault(builder.DialogAction.send("Sorry, but I didn't understand that. Type Help to get some help."));
 
 /* var bot = new builder.UniversalBot(connector, function (session) {
