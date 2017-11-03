@@ -1,8 +1,8 @@
 // A Microsoft Bot Framework template built by the Yeoman botscaffold generator
 // Get App Insights going
-const appInsights = require("applicationinsights");
+/* const appInsights = require("applicationinsights");
 appInsights.setup();
-appInsights.start();
+appInsights.start(); */
 
 // and other requirements
 var restify = require('restify'); 
